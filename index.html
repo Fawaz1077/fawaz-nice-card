@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <base href="/">
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #6165ce;
+    }
+  </style>
+   
+  <title>fawaz-nice-card</title>
+</head>
+
+<body>
+  <button id="duplicate">DUPLICATION MACHINE</button>
+   <button id="change-text">TEXT CHANGING MACHINE</button>
+   <button class="delete">DELETING MACHINE</button>
+   <button class="details-button">DETAILS MACHINE</button>
+  <div id="meow"> 
+  <fawaz-nice-card></fawaz-nice-card>
+</div>
+  <meme-maker></meme-maker>
+
+ 
+  
+   
+   
+<script type="module" src="./src/fawaz-nice-card.js"></script>
+
+<script> 
+
+
+
+document.querySelector('#duplicate').addEventListener('click', function(e) {
+  const cloneItem = document.querySelector('fawaz-nice-card').cloneNode();
+ 
+  document.querySelector('#meow').appendChild(cloneItem);
+});
+
+document.querySelector('.details-button').addEventListener('click', (e) => {
+  const details = document.querySelector('fawaz-nice-card').shadowRoot.querySelector('details')
+console.log ( details ) ; 
+if ( details.getAttribute ('open')) {
+  details.removeAttribute ('open') ;
+}
+else {
+  details.setAttribute ('open' ,'open' ) ;
+}
+});
+
+let originalTitle = "Welcome";
+
+document.querySelector('#change-text').addEventListener("click", function (e) {
+let therapy = prompt("What's on your mind?")
+if (therapy) {
+  document.querySelector('fawaz-nice-card').shadowRoot.querySelector('h2').innerText = therapy;
+  
+}
+
+});
+
+document.querySelector('.delete').addEventListener("click", function (e) {
+
+if ( document.querySelector('#meow :last-child') !== document.querySelector('fawaz-nice-card')) {
+    document.querySelector('#meow :last-child').remove();
+ }
+  else {
+    alert ("My dawg what are you doing") ;
+ }
+
+});
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
