@@ -21,14 +21,17 @@
 </head>
 
 <body>
+  
   <button id="duplicate">DUPLICATION MACHINE</button>
    <button id="change-text">TEXT CHANGING MACHINE</button>
    <button class="delete">DELETING MACHINE</button>
    <button class="details-button">DETAILS MACHINE</button>
-  <div id="meow"> 
-  <fawaz-nice-card></fawaz-nice-card>
+  
+   <div id="meow"> 
+    <fawaz-nice-card opened></fawaz-nice-card>
+    
 </div>
-  <meme-maker></meme-maker>
+ 
 
  
   
@@ -38,6 +41,10 @@
 
 <script> 
 
+document.body.addEventListener('opened-changed', (e) => {
+  document.querySelector('.details-button').innerText = e.detail.value ? 'HIDE DETAILS' : 'SHOW DETAILS';
+  console.log('opened-changed', e.detail, e.target);
+});
 
 
 document.querySelector('#duplicate').addEventListener('click', function(e) {
@@ -47,17 +54,13 @@ document.querySelector('#duplicate').addEventListener('click', function(e) {
 });
 
 document.querySelector('.details-button').addEventListener('click', (e) => {
-  const details = document.querySelector('fawaz-nice-card').shadowRoot.querySelector('details')
-console.log ( details ) ; 
-if ( details.getAttribute ('open')) {
-  details.removeAttribute ('open') ;
-}
-else {
-  details.setAttribute ('open' ,'open' ) ;
-}
+  const card = document.querySelector('fawaz-nice-card');
+  card.opened = !card.opened;
+  
+
 });
 
-let originalTitle = "Welcome";
+
 
 document.querySelector('#change-text').addEventListener("click", function (e) {
 let therapy = prompt("What's on your mind?")

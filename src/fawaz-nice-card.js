@@ -15,7 +15,9 @@ class FawazNiceCard extends LitElement {
           type: String,
         },
         top: { type: String},
-        titeWelcome: { type: String},
+        titleWelcome: { type: String, attribute: 'title-welcome'},
+        opened: {type: Boolean, reflect: true}, 
+
       }
     }
 
@@ -23,7 +25,6 @@ class FawazNiceCard extends LitElement {
       return css`
   .card {
     width: 300px;
-    height: 400px;
     margin: 30px auto;
     border-radius: 10px;
     box-shadow: 2px 2px 8px #ccc;
@@ -202,10 +203,37 @@ class FawazNiceCard extends LitElement {
     super();
     this.header = 'My app';
     this.name = "Welcome";
-  
+    this.opened = false;
+  }
+
+  toggleEvent(e) {
+    const state = this.shadowRoot.querySelector('details').getAttribute('open') === '' ? true : false;
+    this.opened = state;
+    console.log(this.opened);
+  }
+
+
+  updated(changedProperties) { 
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'opened') {
+        this.dispatchEvent(new CustomEvent('opened-changed',
+        {
+          composed: true, 
+          bubbles: true,
+          cancelable: false,
+          detail: {
+          value: this[propName] 
+          } 
+         }
+        ))
+     console.log(`${propName} changed. oldValue: ${oldValue}`);
+      }
     
   
+    });
   }
+
+ 
 
   render() {
     return html`
@@ -213,7 +241,7 @@ class FawazNiceCard extends LitElement {
       
     <img src="https://i.pinimg.com/564x/c4/81/c0/c481c067ad2e11fab13ffe39bc0fd975.jpg" alt="Card Image">
     <meme-maker image-url="https://i.pinimg.com/736x/4d/7c/72/4d7c722291a2f73af96d808395a25f0b.jpg"
-            top-text="My honest reaction"
+            top-text="${this.name}"
             bottom-text="to that information"
             font-size="28px"></meme-maker>
 
@@ -221,8 +249,9 @@ class FawazNiceCard extends LitElement {
    <h2>${this.name}</h2>
   
 
-   <details class="details">
-  <p>I was tasked with making a card for this class. I decided to keep it simple and nice. I also decided to add my handsome face to it. </p>
+   <details class="details" .open="${this.opened}" @toggle="${this.toggleEvent}" @click="${this.clickEvent}">
+    <summary>Le Details</summary>
+    <p>I was tasked with making a card for this class. I decided to keep it simple and nice. I also decided to add my handsome face to it. </p>
   </details>
   </div>
     `;
