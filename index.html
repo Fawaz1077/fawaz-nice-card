@@ -15,6 +15,8 @@
       font-family: sans-serif;
       background-color: #6165ce;
     }
+
+    
   </style>
    
   <title>fawaz-nice-card</title>
@@ -26,9 +28,16 @@
    <button id="change-text">TEXT CHANGING MACHINE</button>
    <button class="delete">DELETING MACHINE</button>
    <button class="details-button">DETAILS MACHINE</button>
+   <button class="color-button">CHANGE COLOR MACHINE</button>
+   
+ 
   
    <div id="meow"> 
-    <fawaz-nice-card opened></fawaz-nice-card>
+    <fawaz-nice-card opened>
+     
+      <p>I was tasked with making a card for this class. I decided to keep it simple and nice. I also decided to add my handsome face to it. </p>
+
+    </fawaz-nice-card>
     
 </div>
  
@@ -40,6 +49,20 @@
 <script type="module" src="./src/fawaz-nice-card.js"></script>
 
 <script> 
+
+const changecolor = document.querySelector(".color-button");
+changecolor.addEventListener("click", function (e) {
+  const colors = ["blue", "red", "yellow","green"]
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  document.querySelector("fawaz-nice-card").accentColor = randomColor;
+});
+
+document.querySelector("fawaz-nice-card").addEventListener('mouseover', (event) => {
+  document.querySelector("fawaz-nice-card").shadowRoot.querySelector(".card").style.backgroundColor = "pink"
+});
+document.querySelector("fawaz-nice-card").addEventListener('mouseout', (event) => {
+  document.querySelector("fawaz-nice-card").shadowRoot.querySelector(".card").style.backgroundColor = null;
+});
 
 document.body.addEventListener('opened-changed', (e) => {
   document.querySelector('.details-button').innerText = e.detail.value ? 'HIDE DETAILS' : 'SHOW DETAILS';

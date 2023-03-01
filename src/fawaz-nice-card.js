@@ -16,13 +16,42 @@ class FawazNiceCard extends LitElement {
         },
         top: { type: String},
         titleWelcome: { type: String, attribute: 'title-welcome'},
-        opened: {type: Boolean, reflect: true}, 
+        opened: {type: Boolean, reflect: true},  
+        accentColor: {
+          type: String,
+          reflect: true,
+          attribute: 'accent-color'
+    
 
       }
     }
 
+  };
+
     static get styles() {
       return css`
+
+
+    :host([accent-color="blue"]) .card {
+      background-color: var(--fawaz-nice-card-accent-color, blue);
+      color: white;
+    }
+    :host([accent-color="red"]) .card {
+      background-color: var(--fawaz-nice-card-accent-color, red);
+      color: white;
+    }
+    :host([accent-color="yellow"]) .card {
+      background-color: var(--fawaz-nice-card-accent-color, yellow);
+      color: white;
+    }
+    :host([accent-color="green"]) .card {
+      background-color: var(--fawaz-nice-card-accent-color, green);
+      color: white;
+    }
+    
+
+
+
   .card {
     width: 300px;
     margin: 30px auto;
@@ -31,6 +60,7 @@ class FawazNiceCard extends LitElement {
     background-color: #f9f9f9;
     overflow: scroll;
   }
+  
   
   div {
     padding: 10px;
@@ -201,6 +231,7 @@ class FawazNiceCard extends LitElement {
 
   constructor() {
     super();
+    this.accentColor = null;
     this.header = 'My app';
     this.name = "Welcome";
     this.opened = false;
@@ -248,12 +279,14 @@ class FawazNiceCard extends LitElement {
    
    <h2>${this.name}</h2>
   
-
    <details class="details" .open="${this.opened}" @toggle="${this.toggleEvent}" @click="${this.clickEvent}">
     <summary>Le Details</summary>
-    <p>I was tasked with making a card for this class. I decided to keep it simple and nice. I also decided to add my handsome face to it. </p>
+    <slot>
+    </slot>
   </details>
+
   </div>
+
     `;
   }
 }
