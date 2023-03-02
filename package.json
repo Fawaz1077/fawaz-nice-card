@@ -3,7 +3,7 @@
   "description": "Webcomponent fawaz-nice-card following open-wc recommendations",
   "license": "MIT",
   "author": "fawaz-nice-card",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "type": "module",
   "scripts": {
     "test": "web-test-runner --coverage",

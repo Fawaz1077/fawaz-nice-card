@@ -59,6 +59,8 @@ class FawazNiceCard extends LitElement {
     box-shadow: 2px 2px 8px #ccc;
     background-color: #f9f9f9;
     overflow: scroll;
+    flex-direction: row;
+    float: left;
   }
   
   
@@ -82,16 +84,6 @@ class FawazNiceCard extends LitElement {
     transform: scale(1.3);
   }
   
-  body {
-    background-color: #80afcd;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-    align-items: center;
-    min-height: 100vh;
-    line-height: 1.4;
-  }
   
   .card h2 {
     margin: 4px;
@@ -282,6 +274,8 @@ class FawazNiceCard extends LitElement {
    <details class="details" .open="${this.opened}" @toggle="${this.toggleEvent}" @click="${this.clickEvent}">
     <summary>Le Details</summary>
     <slot>
+  
+
     </slot>
   </details>
 
