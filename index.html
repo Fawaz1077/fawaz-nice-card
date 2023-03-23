@@ -27,7 +27,7 @@
 <body>
   
   <button id="duplicate">DUPLICATION MACHINE</button>
-   <button id="change-text">TEXT CHANGING MACHINE</button>
+   <button id="changetext">TEXT CHANGING MACHINE</button>
    <button class="delete">DELETING MACHINE</button>
    <button class="details-button">DETAILS MACHINE</button>
    <button class="color-button">CHANGE COLOR MACHINE</button>
@@ -88,7 +88,7 @@ document.querySelector('.details-button').addEventListener('click', (e) => {
 
 
 
-document.querySelector('#change-text').addEventListener("click", function (e) {
+document.querySelector('#changetext').addEventListener("click", function (e) {
 let therapy = prompt("What's on your mind?")
 if (therapy) {
   document.querySelector('fawaz-nice-card').shadowRoot.querySelector('h2').innerText = therapy;

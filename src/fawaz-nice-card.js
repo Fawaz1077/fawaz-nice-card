@@ -15,7 +15,6 @@ class FawazNiceCard extends LitElement {
           type: String,
         },
         top: { type: String},
-        titleWelcome: { type: String, attribute: 'title-welcome'},
         opened: {type: Boolean, reflect: true},  
         accentColor: {
           type: String,
@@ -227,6 +226,10 @@ class FawazNiceCard extends LitElement {
     this.header = 'My app';
     this.name = "Welcome";
     this.opened = false;
+    this.yourPhoto = new URL ("https://images-prod.dazeddigital.com/592/azure/dazed-prod/1060/8/1068776.jpg").href;
+    this.altText = "Your card";
+
+
   }
 
   toggleEvent(e) {
@@ -262,11 +265,8 @@ class FawazNiceCard extends LitElement {
     return html`
     <div class="card">
       
-    <img src="https://i.pinimg.com/564x/c4/81/c0/c481c067ad2e11fab13ffe39bc0fd975.jpg" alt="Card Image">
-    <meme-maker image-url="https://i.pinimg.com/736x/4d/7c/72/4d7c722291a2f73af96d808395a25f0b.jpg"
-            top-text="${this.name}"
-            bottom-text="to that information"
-            font-size="28px"></meme-maker>
+    <img src="${this.yourPhoto}" alt="${this.altText}" />
+    
 
    
    <h2>${this.name}</h2>
