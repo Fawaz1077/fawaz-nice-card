@@ -20,8 +20,10 @@ class FawazNiceCard extends LitElement {
           type: String,
           reflect: true,
           attribute: 'accent-color'
-    
-
+      },
+      yourPhoto: {
+        type: String,
+        reflect: true
       }
     }
 
@@ -226,7 +228,7 @@ class FawazNiceCard extends LitElement {
     this.header = 'My app';
     this.name = "Welcome";
     this.opened = false;
-    this.yourPhoto = new URL ("https://images-prod.dazeddigital.com/592/azure/dazed-prod/1060/8/1068776.jpg").href;
+    this.yourPhoto = '';
     this.altText = "Your card";
 
 
